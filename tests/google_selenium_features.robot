@@ -29,7 +29,7 @@ Validate Search Results Page
 
 Navigate Back To Home
     Go Back
-    Wait Until Element Is Visible    name=q
+    Wait Until Element Is Visible    name=q    10s
 
 Clear And Re-enter Text
     Clear Element Text    name=q
@@ -49,27 +49,19 @@ JavaScript Validation
     Log    ${title}
 
 Screenshot Of Search Box
-    Capture Element Screenshot    name=q
-
-#*** Keywords ***
-#
-#Open Google
-#    Open Browser    ${URL}    ${BROWSER}
-#    Maximize Browser Window
-#    Set Selenium Implicit Wait    5s
+    Wait Until Element Is Visible    name=q    10s
+    Scroll Element Into View         name=q
+    Capture Element Screenshot       name=q
 
 *** Keywords ***
+
 Open Google
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    Call Method    ${options}    add_argument    --headless
-    Call Method    ${options}    add_argument    --no-sandbox
-    Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    Call Method    ${options}    add_argument    --window-size=1920,1080
-    Open Browser    https://www.google.com    chrome    options=${options}
+    Open Browser
+    ...    ${URL}
+    ...    ${BROWSER}
+    ...    options=add_argument("--headless"),
+    ...            add_argument("--no-sandbox"),
+    ...            add_argument("--disable-dev-shm-usage"),
+    ...            add_argument("--window-size=1920,1080")
     Set Window Size    1920    1080
     Set Selenium Implicit Wait    5s
-
-
-
-
-
