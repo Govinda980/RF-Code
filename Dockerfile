@@ -18,7 +18,7 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearm
     rm -rf /var/lib/apt/lists/*
 
 # Install ChromeDriver (LAST KNOWN GOOD STABLE)
-RUN DRIVER_URL=$(curl -s https://googlechromelabs..github.io/chrome-for-testing/last-known-good-versions-with-downloads.json \
+RUN DRIVER_URL=$(curl -s https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json \
     | jq -r '.channels.Stable.downloads.chromedriver[] | select(.platform=="linux64") | .url') && \
     wget -q "$DRIVER_URL" -O /tmp/chromedriver.zip && \
     unzip /tmp/chromedriver.zip -d /tmp && \
