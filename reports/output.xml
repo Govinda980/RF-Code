@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.11.14 on linux)" generated="2026-01-03T19:37:33.271114" rpa="false" schemaversion="5">
+<suite id="s1" name="Google Selenium Features" source="/robot/tests/google_selenium_features.robot">
+<kw name="Open Google" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-01-03T19:37:33.454716" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7d7a2df05dd0&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-01-03T19:37:33.453299" elapsed="0.001472"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-01-03T19:37:33.454927" elapsed="0.000369"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-01-03T19:37:33.455573" elapsed="0.000283"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-01-03T19:37:33.455949" elapsed="0.000188"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:33.456740" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com'.</msg>
+<arg>https://www.google.com</arg>
+<arg>chrome</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-01-03T19:37:33.456468" elapsed="1.920671"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.377719" elapsed="0.037320"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.415387" elapsed="0.002184"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:33.452370" elapsed="1.965499"/>
+</kw>
+<test id="s1-t1" name="Verify Google Page Title" line="14">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:35.426529" level="INFO">Page title is 'Google'.</msg>
+<arg>Google</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.418594" elapsed="0.008033"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:35.490246" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.426869" elapsed="0.063487"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:35.418099" elapsed="0.072326"/>
+</test>
+<test id="s1-t2" name="Verify Search Box Visibility" line="17">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>name=q</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.491034" elapsed="0.057607"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:35.564054" level="INFO">Element 'name=q' is displayed.</msg>
+<arg>name=q</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.548812" elapsed="0.015388"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:35.616863" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.564552" elapsed="0.052412"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:35.490689" elapsed="0.126338"/>
+</test>
+<test id="s1-t3" name="Search Using Enter Key" line="21">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:35.617744" level="INFO">Typing text 'Robot Framework SeleniumLibrary' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>${SEARCH_TEXT}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.617504" elapsed="0.151973"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:35.770136" level="INFO">Sending key(s) ('ENTER',) to name=q element.</msg>
+<msg time="2026-01-03T19:37:36.067223" level="INFO">Pressing special key ENTER to element.</msg>
+<msg time="2026-01-03T19:37:36.067296" level="INFO">Releasing special key ENTER.</msg>
+<arg>name=q</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2026-01-03T19:37:35.769691" elapsed="1.888999"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:42.954309" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-01-03T19:37:42.954549" level="FAIL">Text 'Robot Framework' did not appear in 5 seconds.</msg>
+<arg>Robot Framework</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="FAIL" start="2026-01-03T19:37:37.658937" elapsed="5.296475">Text 'Robot Framework' did not appear in 5 seconds.</status>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:42.998357" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:42.955757" elapsed="0.042700"/>
+</kw>
+<status status="FAIL" start="2026-01-03T19:37:35.617244" elapsed="7.381279">Text 'Robot Framework' did not appear in 5 seconds.</status>
+</test>
+<test id="s1-t4" name="Validate Search Results Page" line="26">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:43.011356" level="INFO">Current page contains text 'SeleniumLibrary'.</msg>
+<arg>SeleniumLibrary</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2026-01-03T19:37:42.999045" elapsed="0.012407"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:43.012067" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight)
+Without any arguments.</msg>
+<arg>window.scrollTo(0, document.body.scrollHeight)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.011595" elapsed="0.005576"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:43.068620" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.017400" elapsed="0.051323"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:42.998770" elapsed="0.070018"/>
+</test>
+<test id="s1-t5" name="Navigate Back To Home" line="30">
+<kw name="Go Back" owner="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.069987" elapsed="0.029198"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>name=q</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.099489" elapsed="0.019440"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:43.182381" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.119163" elapsed="0.063337"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:43.069707" elapsed="0.112874"/>
+</test>
+<test id="s1-t6" name="Clear And Re-enter Text" line="34">
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>name=q</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.183154" elapsed="0.041608"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:43.225131" level="INFO">Typing text 'Robot Framework automation' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>Robot Framework automation</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.224945" elapsed="0.165569"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:43.432445" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.390962" elapsed="0.041674"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:43.182902" elapsed="0.249817"/>
+</test>
+<test id="s1-t7" name="Keyboard Shortcuts" line="38">
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:43.433676" level="INFO">Sending key(s) ('CTRL+A',) to name=q element.</msg>
+<msg time="2026-01-03T19:37:43.717089" level="INFO">Pressing special key CONTROL down.</msg>
+<msg time="2026-01-03T19:37:43.717236" level="INFO">Sending key A</msg>
+<msg time="2026-01-03T19:37:43.717311" level="INFO">Releasing special key CONTROL.</msg>
+<arg>name=q</arg>
+<arg>CTRL+A</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.433303" elapsed="0.291662"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:43.725436" level="INFO">Sending key(s) ('BACKSPACE',) to name=q element.</msg>
+<msg time="2026-01-03T19:37:44.007848" level="INFO">Pressing special key BACKSPACE to element.</msg>
+<msg time="2026-01-03T19:37:44.007995" level="INFO">Releasing special key BACKSPACE.</msg>
+<arg>name=q</arg>
+<arg>BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2026-01-03T19:37:43.725144" elapsed="0.293861"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:44.066638" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:44.019365" elapsed="0.047409"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:43.432953" elapsed="0.633885"/>
+</test>
+<test id="s1-t8" name="Mouse Action (Click Search Button)" line="42">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:44.067509" level="INFO">Typing text 'Robot Framework' into text field 'name=q'.</msg>
+<arg>name=q</arg>
+<arg>Robot Framework</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-01-03T19:37:44.067322" elapsed="0.110945"/>
+</kw>
+<kw name="Press Keys" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:44.178873" level="INFO">Sending key(s) ('ENTER',) to name=q element.</msg>
+<msg time="2026-01-03T19:37:44.459285" level="INFO">Pressing special key ENTER to element.</msg>
+<msg time="2026-01-03T19:37:44.459422" level="INFO">Releasing special key ENTER.</msg>
+<arg>name=q</arg>
+<arg>ENTER</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<status status="PASS" start="2026-01-03T19:37:44.178554" elapsed="1.385181"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Robot</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-01-03T19:37:45.564153" elapsed="0.016859"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:45.642340" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-9.png"&gt;&lt;img src="selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:45.581267" elapsed="0.061201"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:44.067045" elapsed="1.575511"/>
+</test>
+<test id="s1-t9" name="JavaScript Validation" line="47">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:45.643447" level="INFO">Executing JavaScript:
+return document.title
+Without any arguments.</msg>
+<msg time="2026-01-03T19:37:45.653242" level="INFO">${title} = https://www.google.com/search?q=Robot+Framework&amp;sca_esv=16f09f52f58857e4&amp;source=hp&amp;ei=_m9Zaai9FvSfseMPvPnz4Q0&amp;iflsig=AOw8s4IAAAAAaVl-DiZvWig8BUuk_j8EKaXMjAPpm9ya&amp;ved=0ahUKEwiotIypj_CRAxX0T2wGHbz8PNwQ4...</msg>
+<var>${title}</var>
+<arg>return document.title</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-01-03T19:37:45.643154" elapsed="0.010140"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-01-03T19:37:45.653820" level="INFO">https://www.google.com/search?q=Robot+Framework&amp;sca_esv=16f09f52f58857e4&amp;source=hp&amp;ei=_m9Zaai9FvSfseMPvPnz4Q0&amp;iflsig=AOw8s4IAAAAAaVl-DiZvWig8BUuk_j8EKaXMjAPpm9ya&amp;ved=0ahUKEwiotIypj_CRAxX0T2wGHbz8PNwQ4dUDCA8&amp;uact=5&amp;oq=Robot+Framework&amp;gs_lp=Egdnd3Mtd2l6Ig9Sb2JvdCBGcmFtZXdvcmsyCBAAGIAEGLEDMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESIAJUABY2gZwA3gAkAEEmAGoAaABiAmqAQMxLji4AQPIAQD4AQGYAgegApkEwgIGEAAYFhgemAMAkgcDMy40oAf_OLIHAzAuNLgHkgTCBwUwLjUuMsgHFoAIAA&amp;sclient=gws-wiz&amp;sei=CHBZadWmA4GZnesPm6OboA8</msg>
+<arg>${title}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-01-03T19:37:45.653478" elapsed="0.000398"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:45.736018" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-10.png"&gt;&lt;img src="selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:45.654140" elapsed="0.081985"/>
+</kw>
+<status status="PASS" start="2026-01-03T19:37:45.642879" elapsed="0.093311"/>
+</test>
+<test id="s1-t10" name="Screenshot Of Search Box" line="51">
+<kw name="Capture Element Screenshot" owner="SeleniumLibrary">
+<msg time="2026-01-03T19:37:45.986906" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-11.png"&gt;&lt;img src="selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-01-03T19:37:45.987767" level="FAIL">WebDriverException: Message: unknown error: unhandled inspector error: {"code":-32000,"message":"Cannot take screenshot with 0 width."}
+  (Session info: chrome=143.0.7499.169)
+Stacktrace:
+#0 0x5d7d4a0f961a &lt;unknown&gt;
+#1 0x5d7d49b7620b &lt;unknown&gt;
+#2 0x5d7d49b5d6cb &lt;unknown&gt;
+#3 0x5d7d49b5c00a &lt;unknown&gt;
+#4 0x5d7d49b5c75f &lt;unknown&gt;
+#5 0x5d7d49b850a9 &lt;unknown&gt;
+#6 0x5d7d49bc4b46 &lt;unknown&gt;
+#7 0x5d7d49bbba67 &lt;unknown&gt;
+#8 0x5d7d49c1320e &lt;unknown&gt;
+#9 0x5d7d49bba232 &lt;unknown&gt;
+#10 0x5d7d49bbaee1 &lt;unknown&gt;
+#11 0x5d7d4a0c23f9 &lt;unknown&gt;
+#12 0x5d7d4a0c534d &lt;unknown&gt;
+#13 0x5d7d4a0ab122 &lt;unknown&gt;
+#14 0x5d7d4a0c5f2b &lt;unknown&gt;
+#15 0x5d7d4a091c30 &lt;unknown&gt;
+#16 0x5d7d4a0e6d78 &lt;unknown&gt;
+#17 0x5d7d4a0e6f4c &lt;unknown&gt;
+#18 0x5d7d4a0f8973 &lt;unknown&gt;
+#19 0x7aecbe9a2b7b &lt;unknown&gt;
+</msg>
+<arg>name=q</arg>
+<doc>Captures a screenshot from the element identified by ``locator`` and embeds it into log file.</doc>
+<status status="FAIL" start="2026-01-03T19:37:45.736745" elapsed="0.251973">WebDriverException: Message: unknown error: unhandled inspector error: {"code":-32000,"message":"Cannot take screenshot with 0 width."}
+  (Session info: chrome=143.0.7499.169)
+Stacktrace:
+#0 0x5d7d4a0f961a &lt;unknown&gt;
+#1 0x5d7d49b7620b &lt;unknown&gt;
+#2 0x5d7d49b5d6cb &lt;unknown&gt;
+#3 0x5d7d49b5c00a &lt;unknown&gt;
+#4 0x5d7d49b5c75f &lt;unknown&gt;
+#5 0x5d7d49b850a9 &lt;unknown&gt;
+#6 0x5d7d49bc4b46 &lt;unknown&gt;
+#7 0x5d7d49bbba67 &lt;unknown&gt;
+#8 0x5d7d49c1320e &lt;unknown&gt;
+#9 0x5d7d49bba232 &lt;unknown&gt;
+#10 0x5d7d49bbaee1 &lt;unknown&gt;
+#11 0x5d7d4a0c23f9 &lt;unknown&gt;
+#12 0x5d7d4a0c534d &lt;unknown&gt;
+#13 0x5d7d4a0ab122 &lt;unknown&gt;
+#14 0x5d7d4a0c5f2b &lt;unknown&gt;
+#15 0x5d7d4a091c30 &lt;unknown&gt;
+#16 0x5d7d4a0e6d78 &lt;unknown&gt;
+#17 0x5d7d4a0e6f4c &lt;unknown&gt;
+#18 0x5d7d4a0f8973 &lt;unknown&gt;
+#19 0x7aecbe9a2b7b &lt;unknown&gt;
+</status>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary" type="TEARDOWN">
+<msg time="2026-01-03T19:37:46.052184" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-12.png"&gt;&lt;img src="selenium-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-01-03T19:37:45.988995" elapsed="0.063286"/>
+</kw>
+<status status="FAIL" start="2026-01-03T19:37:45.736402" elapsed="0.315943">WebDriverException: Message: unknown error: unhandled inspector error: {"code":-32000,"message":"Cannot take screenshot with 0 width."}
+  (Session info: chrome=143.0.7499.169)
+Stacktrace:
+#0 0x5d7d4a0f961a &lt;unknown&gt;
+#1 0x5d7d49b7620b &lt;unknown&gt;
+#2 0x5d7d49b5d6cb &lt;unknown&gt;
+#3 0x5d7d49b5c00a &lt;unknown&gt;
+#4 0x5d7d49b5c75f &lt;unknown&gt;
+#5 0x5d7d49b850a9 &lt;unknown&gt;
+#6 0x5d7d49bc4b46 &lt;unknown&gt;
+#7 0x5d7d49bbba67 &lt;unknown&gt;
+#8 0x5d7d49c1320e &lt;unknown&gt;
+#9 0x5d7d49bba232 &lt;unknown&gt;
+#10 0x5d7d49bbaee1 &lt;unknown&gt;
+#11 0x5d7d4a0c23f9 &lt;unknown&gt;
+#12 0x5d7d4a0c534d &lt;unknown&gt;
+#13 0x5d7d4a0ab122 &lt;unknown&gt;
+#14 0x5d7d4a0c5f2b &lt;unknown&gt;
+#15 0x5d7d4a091c30 &lt;unknown&gt;
+#16 0x5d7d4a0e6d78 &lt;unknown&gt;
+#17 0x5d7d4a0e6f4c &lt;unknown&gt;
+#18 0x5d7d4a0f8973 &lt;unknown&gt;
+#19 0x7aecbe9a2b7b &lt;unknown&gt;
+</status>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-01-03T19:37:46.052793" elapsed="0.060250"/>
+</kw>
+<status status="FAIL" start="2026-01-03T19:37:33.273305" elapsed="12.839810"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Google Selenium Features" id="s1" pass="8" fail="2" skip="0">Google Selenium Features</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
