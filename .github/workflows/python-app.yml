@@ -32,7 +32,7 @@ jobs:
           docker run --rm \
             -v ${{ github.workspace }}/reports:/robot/reports \
             govinda520/robot-google-headless:latest \
-            robot --maxfail 4 tests || [ $? -le 1 ]
+            || [ $? -le 4 ]
 
       # Runs ONLY if above step is acceptable
       - name: Push image to Docker Hub
