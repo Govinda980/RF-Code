@@ -35,18 +35,3 @@ COPY . /robot
 
 CMD ["robot", "-d", "reports", "tests/google_selenium_features.robot"]
 
-
-#docker build --no-cache -t robot-google-headless .
-        #    --no-cache → ensures a fresh build (no old layers are reused)
-        #    -t robot-google-headless → tags the image locally
-#docker run --rm `
-#  -v ${PWD}/reports:/robot/reports `
-#  robot-google-headless
-
-#(.venv) PS C:\Python\RF-Code> docker tag robot-google-headless govinda520/robot-google-headless:latest
-        #    govinda520 → your Docker Hub username
-        #     robot-google-headless → repository name
-        #     latest → tag
- #(.venv) PS C:\Python\RF-Code> docker push govinda520/robot-google-headless:latest
-
-#dockerhubtoken--> dckr_pat_ud-PErWAUOyS6qbR1O8amCskZ3w

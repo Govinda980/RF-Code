@@ -27,17 +27,20 @@ jobs:
         run: |
           docker build -t govinda520/robot-google-headless:latest .
 
-      - name: Push image to Docker Hub
-        run: |
-          docker push govinda520/robot-google-headless:latest
-
       - name: Run Robot Framework tests
         run: |
           docker run --rm \
             -v ${{ github.workspace }}/reports:/robot/reports \
-            govinda520/robot-google-headless:latest || [ $? -le 4 ]
+            govinda520/robot-google-headless:latest
+
+      # ⬇️ ONLY runs if tests PASSED
+      - name: Push image to Docker Hub
+        if: success()
+        run: |
+          docker push govinda520/robot-google-headless:latest
 
       - name: Upload Robot Reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: robot-test-reports
