@@ -38,7 +38,7 @@ jobs:
       - name: Push image to Docker Hub
         if: success()
         run: |
-          docker push govinda520/robot-google-headless:latest
+          docker push govinda520/robot-google-headless:v1.0
 
       - name: Upload Robot Reports
         if: always()
