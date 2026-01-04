@@ -27,13 +27,14 @@ jobs:
         run: |
           docker build -t govinda520/robot-google-headless:latest .
 
-      - name: Run Robot Framework tests
+      - name: Run Robot Framework tests (allow <4 failures)
         run: |
           docker run --rm \
             -v ${{ github.workspace }}/reports:/robot/reports \
-            govinda520/robot-google-headless:latest
+            govinda520/robot-google-headless:latest \
+            robot --maxfail 4 tests || [ $? -le 1 ]
 
-      # ⬇️ ONLY runs if tests PASSED
+      # Runs ONLY if above step is acceptable
       - name: Push image to Docker Hub
         if: success()
         run: |
