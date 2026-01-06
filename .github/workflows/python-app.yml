@@ -1,4 +1,4 @@
-name: Robot Framework Selenium CI
+name: Robot Framework Selenium CI/CD
 
 on:
   push:
